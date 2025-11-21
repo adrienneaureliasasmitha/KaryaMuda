@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaryaMuda - Platform Karya Anak Muda Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        gradient: {
+                            start: '#667eea',
+                            end: '#764ba2',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'display': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #ec90f6 0%, #eb566a 100%);
+            --tertiary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fffbeb 100%);
+        }
+        .hero-gradient {
+            background: var(--primary-gradient);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--primary-gradient);
+            border-radius: 16px;
+            z-index: -1;
+        }
+        .gradient-bg {
+            background: var(--primary-gradient);
+        }
+        .submit-form {
+            display: none;
+        }
+        .active-form {
+            display: block !important;
+        }
+        .tab-active {
+            background: var(--primary-gradient);
+            color: white !important;
+            transform: scale(1.05);
+        }
+        .experience-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+        }
+        .like-btn.active {
+            background-color: #ef4444;
+            color: white;
+        }
+        .view-counter {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .project-overlay {
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            background: rgba(0,0,0,0.6);
+        }
+        .project-overlay:hover {
+            opacity: 1;
+        }
+        .category-active {
+            background: var(--primary-gradient) !important;
+            color: white !important;
+            transform: scale(1.05);
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-white/20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl flex items-center justify-center floating-animation">
+                        <i class="fas fa-paint-brush text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">
+                        KaryaMuda
+                    </span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-slate-700 hover:text-primary-600 transition-colors font-medium">Beranda</a>
+                    <a href="#karya" class="text-slate-700 hover:text-primary-600 transition-colors font-medium">Karya</a>
+                    <a href="#pengalaman" class="text-slate-700 hover:text-primary-600 transition-colors font-medium">Pengalaman</a>
+                </nav>
+                <button class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-xl hover:shadow-xl transition-all duration-300 font-medium pulse-animation" onclick="showSubmitForm()">
+                    <i class="fas fa-plus text-sm"></i>
+                    <span>Submit Karya</span>
+                </button>
+                <button class="md:hidden text-slate-700" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-lg border-t border-white/20">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block text-slate-700 hover:text-primary-600 font-medium">Beranda</a>
+                <a href="#karya" class="block text-slate-700 hover:text-primary-600 font-medium">Karya</a>
+                <a href="#pengalaman" class="block text-slate-700 hover:text-primary-600 font-medium">Pengalaman</a>
+                <button class="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-xl font-medium" onclick="showSubmitForm()">
+                    <i class="fas fa-plus text-sm"></i>
+                    <span>Submit Karya</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
+                    Karya Anak Muda
+                    <span class="block gradient-text mt-2">
+                        Indonesia
+                    </span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Platform untuk menampilkan karya-karya kreatif anak muda Indonesia kepada dunia. 
+                    Tempat di mana bakat bertemu peluang dan inovasi menjadi inspirasi global.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button class="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-2 font-medium pulse-animation glow-effect" onclick="scrollToSection('karya')">
+                        <i class="fas fa-rocket text-sm"></i>
+                        <span>Temukan Karya</span>
+                    </button>
+                    <button class="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-xl hover:bg-primary-600 hover:text-white transition-all duration-300 font-medium" onclick="showSubmitForm()">
+                        Submit Karya
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Stats -->
+        <div class="bg-white/50 backdrop-blur-sm border-t border-white/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center cursor-pointer" onclick="animateCounter(this, 5000)">
+                        <div class="text-3xl font-bold gradient-text mb-2" data-target="5000">0</div>
+                        <div class="text-slate-600 font-medium">Karya Terpublikasi</div>
+                    </div>
+                    <div class="text-center cursor-pointer" onclick="animateCounter(this, 2500)">
+                        <div class="text-3xl font-bold gradient-text mb-2" data-target="2500">0</div>
+                        <div class="text-slate-600 font-medium">Kreator Aktif</div>
+                    </div>
+                    <div class="text-center cursor-pointer" onclick="animateCounter(this, 50)">
+                        <div class="text-3xl font-bold gradient-text mb-2" data-target="50">0</div>
+                        <div class="text-slate-600 font-medium">Negara</div>
+                    </div>
+                    <div class="text-center cursor-pointer" onclick="animateCounter(this, 100000)">
+                        <div class="text-3xl font-bold gradient-text mb-2" data-target="100000">0</div>
+                        <div class="text-slate-600 font-medium">Pengunjung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories -->
+    <section id="karya" class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg font-medium category-active" data-category="all">
+                    <i class="fas fa-globe text-sm"></i>
+                    <span>Semua Karya</span>
+                </button>
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 font-medium" data-category="seni">
+                    <i class="fas fa-palette text-sm"></i>
+                    <span>Seni Rupa</span>
+                </button>
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 font-medium" data-category="musik">
+                    <i class="fas fa-music text-sm"></i>
+                    <span>Musik</span>
+                </button>
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 font-medium" data-category="teknologi">
+                    <i class="fas fa-laptop-code text-sm"></i>
+                    <span>Teknologi</span>
+                </button>
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 font-medium" data-category="sastra">
+                    <i class="fas fa-book text-sm"></i>
+                    <span>Sastra</span>
+                </button>
+                <button class="category-btn flex items-center space-x-2 px-6 py-3 rounded-full bg-white text-slate-700 hover:bg-slate-50 border border-slate-200 font-medium" data-category="film">
+                    <i class="fas fa-video text-sm"></i>
+                    <span>Film & Video</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Projects -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="seni">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/667eea/ffffff?text=Digital+Art" alt="Keheningan di Tengah Huru-hara" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                            <i class="fas fa-star text-xs"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 1)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(1)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(1)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Keheningan di Tengah Huru-hara</h3>
+                        <p class="text-slate-600 mb-3">oleh Sari Dewi</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Koleksi lukisan digital yang menggambarkan kehidupan urban masa kini melalui perspektif perempuan muda.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-1">234</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-1">1,200</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">seni rupa</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="musik">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/764ba2/ffffff?text=Music+Album" alt="Suara dari Timur" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                            <i class="fas fa-star text-xs"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 2)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(2)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(2)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Suara dari Timur</h3>
+                        <p class="text-slate-600 mb-3">oleh Ahmad Rahman</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Album indie eksperimental yang menggabungkan alat musik tradisional dengan elektronik modern.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-2">456</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-2">2,100</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">musik</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="teknologi">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/4facfe/ffffff?text=Tech+Innovation" alt="AI untuk Pendidikan" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 3)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(3)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(3)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">AI untuk Pendidikan</h3>
+                        <p class="text-slate-600 mb-3">oleh Budi Santoso</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Platform pembelajaran berbasis kecerdasan buatan yang membantu siswa belajar secara personal.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-3">189</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-3">980</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">teknologi</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="sastra">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/f093fb/ffffff?text=Literature" alt="Puisi Tanpa Batas" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                            <i class="fas fa-star text-xs"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 4)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(4)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(4)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Puisi Tanpa Batas</h3>
+                        <p class="text-slate-600 mb-3">oleh Intan Permata</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Antologi puisi kontemporer yang mengeksplorasi identitas dan perjuangan generasi muda.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-4">321</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-4">1,500</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">sastra</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="film">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/00f2fe/ffffff?text=Documentary" alt="Cermin Digital" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 5)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(5)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(5)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Cermin Digital</h3>
+                        <p class="text-slate-600 mb-3">oleh Rizki Maulana</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Film dokumenter pendek tentang dampak media sosial terhadap kesehatan mental remaja.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-5">298</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-5">1,750</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">film</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group" data-category="teknologi">
+                    <div class="relative">
+                        <img src="https://placehold.co/400x300/f5576c/ffffff?text=AR+App" alt="Warisan Digital" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                            <i class="fas fa-star text-xs"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, 6)">
+                                <i class="far fa-heart text-sm"></i>
+                            </button>
+                            <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(6)">
+                                <i class="fas fa-share text-sm"></i>
+                            </button>
+                        </div>
+                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                            <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(6)">
+                                Lihat Detail
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Warisan Digital</h3>
+                        <p class="text-slate-600 mb-3">oleh Dewi Lestari</p>
+                        <p class="text-slate-700 mb-4 line-clamp-2">Aplikasi mobile yang melestarikan cerita rakyat Indonesia dalam format augmented reality.</p>
+                        <div class="flex items-center justify-between text-sm text-slate-500">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-1">
+                                    <i class="far fa-heart text-sm"></i>
+                                    <span id="likes-6">412</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-eye text-sm"></i>
+                                    <span id="views-6">2,200</span>
+                                </div>
+                            </div>
+                            <span class="capitalize text-primary-600 font-medium">teknologi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Submit Form Modal -->
+    <div id="submit-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 relative">
+            <button class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" onclick="hideSubmitForm()">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">Submit Karya Baru</h2>
+            <form id="submit-form" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Judul Karya</label>
+                    <input type="text" id="project-title" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Masukkan judul karya Anda">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Nama Anda</label>
+                    <input type="text" id="project-author" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Nama Anda">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Kategori</label>
+                    <select id="project-category" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                        <option value="">Pilih kategori</option>
+                        <option value="seni">Seni Rupa</option>
+                        <option value="musik">Musik</option>
+                        <option value="teknologi">Teknologi</option>
+                        <option value="sastra">Sastra</option>
+                        <option value="film">Film & Video</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Deskripsi</label>
+                    <textarea id="project-description" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent h-32" placeholder="Jelaskan karya Anda..."></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-3 rounded-xl hover:shadow-lg transition-all duration-300 font-medium">
+                        Submit Karya
+                    </button>
+                    <button type="button" class="flex-1 border border-slate-300 text-slate-700 py-3 rounded-xl hover:bg-slate-50 transition-all duration-300 font-medium" onclick="hideSubmitForm()">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Experience Sharing Section -->
+    <section id="pengalaman" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Bagikan Pengalamanmu</h2>
+                <p class="text-slate-600">Ceritakan perjalanan kreatifmu dan inspirasi yang membentuk karyamu</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl shadow-lg experience-card" onclick="showExperienceForm()">
+                    <div class="w-12 h-12 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-plus text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Bagikan Pengalaman</h3>
+                    <p class="text-slate-600">Ceritakan perjalanan kreatifmu dan inspirasi yang membentuk karyamu</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg experience-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/667eea/ffffff?text=SM" alt="Sari Mawar" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-slate-900">Sari Mawar</h4>
+                            <p class="text-slate-600 text-sm">Seniman Digital</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">"Proses kreatif saya dimulai dari kegelisahan akan identitas perempuan muda di kota besar..."</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg experience-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/764ba2/ffffff?text=AR" alt="Andi Rahman" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-slate-900">Andi Rahman</h4>
+                            <p class="text-slate-600 text-sm">Musisi Indie</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">"Saya menggabungkan suara tradisional dengan modern untuk menciptakan sesuatu yang baru..."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Form Modal -->
+    <div id="experience-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 relative">
+            <button class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" onclick="hideExperienceForm()">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">Bagikan Pengalaman Kreatifmu</h2>
+            <form id="experience-form" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Nama Lengkap</label>
+                    <input type="text" id="exp-name" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Nama Anda">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Judul Pengalaman</label>
+                    <input type="text" id="exp-title" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Judul pengalaman Anda">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Kategori</label>
+                    <select id="exp-category" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                        <option value="">Pilih kategori</option>
+                        <option value="seni">Seni Rupa</option>
+                        <option value="musik">Musik</option>
+                        <option value="teknologi">Teknologi</option>
+                        <option value="sastra">Sastra</option>
+                        <option value="film">Film & Video</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">Pengalaman Kreatif</label>
+                    <textarea id="exp-content" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent h-32" placeholder="Ceritakan pengalaman kreatif Anda..."></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="submit" class="flex-1 bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-3 rounded-xl hover:shadow-lg transition-all duration-300 font-medium">
+                        Bagikan Pengalaman
+                    </button>
+                    <button type="button" class="flex-1 border border-slate-300 text-slate-700 py-3 rounded-xl hover:bg-slate-50 transition-all duration-300 font-medium" onclick="hideExperienceForm()">
+                        Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+            <button class="absolute top-4 right-4 text-slate-500 hover:text-slate-700 z-10" onclick="hideProjectModal()">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div class="p-6" id="project-modal-content">
+                <!-- Content will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+    <!-- Collaboration Modal -->
+    <div id="collab-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative">
+            <button class="absolute top-4 right-4 text-slate-500 hover:text-slate-700" onclick="hideCollabModal()">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 text-center" id="collab-title">
+                Hubungi Kreator
+            </h2>
+            <p class="text-slate-600 mb-6 text-center text-sm" id="collab-subtitle">
+                Kirim permintaan kolaborasi langsung
+            </p>
+            <form id="collab-form" class="space-y-4">
+                <input type="text" id="collab-name" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Nama Anda" required>
+                <input type="email" id="collab-email" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Email Anda" required>
+                <textarea id="collab-message" class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent h-24" placeholder="Pesan kolaborasi (opsional)"></textarea>
+                <button type="submit" class="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-3 rounded-xl hover:shadow-lg transition-all duration-300 font-medium">
+                    Kirim Permintaan Kolaborasi
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-paint-brush text-white text-lg"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">KaryaMuda</span>
+            </div>
+            <p class="text-slate-400 max-w-2xl mx-auto">
+                Platform untuk menampilkan karya-karya kreatif anak muda Indonesia kepada dunia.
+            </p>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-slate-400">
+                <p>&copy; 2025 Karya Muda Indonesia. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Like functionality
+        function toggleLike(button, projectId) {
+            const isActive = button.classList.contains('active');
+            const icon = button.querySelector('i');
+            const likesElement = document.getElementById(`likes-${projectId}`);
+            let likes = parseInt(likesElement.textContent.replace(/,/g, ''));
+            
+            if (isActive) {
+                likes--;
+                button.classList.remove('active');
+                icon.className = 'far fa-heart text-sm';
+                button.style.backgroundColor = '';
+                button.style.color = '';
+            } else {
+                likes++;
+                button.classList.add('active');
+                icon.className = 'fas fa-heart text-sm';
+                button.style.backgroundColor = '#ef4444';
+                button.style.color = 'white';
+            }
+            likesElement.textContent = likes.toLocaleString();
+        }
+
+        // Share functionality
+        function shareProject(projectId) {
+            alert(`Karya ID ${projectId} berhasil dibagikan!`);
+        }
+
+        // View project detail
+        function viewProject(projectId) {
+            const projects = [
+                {
+                    id: 1,
+                    title: 'Keheningan di Tengah Huru-hara',
+                    author: 'Sari Dewi',
+                    category: 'seni',
+                    description: 'Koleksi lukisan digital yang menggambarkan kehidupan urban masa kini melalui perspektif perempuan muda.',
+                    likes: 234,
+                    views: 1200,
+                    featured: true,
+                    image: 'https://placehold.co/400x300/667eea/ffffff?text=Digital+Art',
+                    comments: []
+                },
+                {
+                    id: 2,
+                    title: 'Suara dari Timur',
+                    author: 'Ahmad Rahman',
+                    category: 'musik',
+                    description: 'Album indie eksperimental yang menggabungkan alat musik tradisional dengan elektronik modern.',
+                    likes: 456,
+                    views: 2100,
+                    featured: true,
+                    image: 'https://placehold.co/400x300/764ba2/ffffff?text=Music+Album',
+                    comments: []
+                },
+                {
+                    id: 3,
+                    title: 'AI untuk Pendidikan',
+                    author: 'Budi Santoso',
+                    category: 'teknologi',
+                    description: 'Platform pembelajaran berbasis kecerdasan buatan yang membantu siswa belajar secara personal.',
+                    likes: 189,
+                    views: 980,
+                    featured: false,
+                    image: 'https://placehold.co/400x300/4facfe/ffffff?text=Tech+Innovation',
+                    comments: []
+                },
+                {
+                    id: 4,
+                    title: 'Puisi Tanpa Batas',
+                    author: 'Intan Permata',
+                    category: 'sastra',
+                    description: 'Antologi puisi kontemporer yang mengeksplorasi identitas dan perjuangan generasi muda.',
+                    likes: 321,
+                    views: 1500,
+                    featured: true,
+                    image: 'https://placehold.co/400x300/f093fb/ffffff?text=Literature',
+                    comments: []
+                },
+                {
+                    id: 5,
+                    title: 'Cermin Digital',
+                    author: 'Rizki Maulana',
+                    category: 'film',
+                    description: 'Film dokumenter pendek tentang dampak media sosial terhadap kesehatan mental remaja.',
+                    likes: 298,
+                    views: 1750,
+                    featured: false,
+                    image: 'https://placehold.co/400x300/00f2fe/ffffff?text=Documentary',
+                    comments: []
+                },
+                {
+                    id: 6,
+                    title: 'Warisan Digital',
+                    author: 'Dewi Lestari',
+                    category: 'teknologi',
+                    description: 'Aplikasi mobile yang melestarikan cerita rakyat Indonesia dalam format augmented reality.',
+                    likes: 412,
+                    views: 2200,
+                    featured: true,
+                    image: 'https://placehold.co/400x300/f5576c/ffffff?text=AR+App',
+                    comments: []
+                }
+            ];
+
+            const project = projects.find(p => p.id === projectId);
+            if (!project) return;
+
+            let featuredBadge = '';
+            if (project.featured) {
+                featuredBadge = `
+                    <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
+                        <i class="fas fa-star text-xs"></i>
+                        <span>Featured</span>
+                    </div>
+                `;
+            }
+
+            const commentsHtml = project.comments.length > 0 ? 
+                project.comments.map(c => `
+                    <div class="bg-slate-50 p-3 rounded-lg">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-medium">${c.author}</span>
+                            <span class="text-xs text-slate-500">${c.time}</span>
+                        </div>
+                        <p class="text-slate-700">${c.text}</p>
+                    </div>
+                `).join('') : '<p class="text-slate-500 text-center">Belum ada komentar.</p>';
+
+            document.getElementById('project-modal-content').innerHTML = `
+                <div class="relative mb-4">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover rounded-xl">
+                    ${featuredBadge}
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">${project.title}</h2>
+                <p class="text-slate-600 mb-4">oleh ${project.author}</p>
+                <p class="text-slate-700 mb-6">${project.description}</p>
+                
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <button onclick="handleLikeInModal(${projectId})" class="flex items-center space-x-2 bg-red-50 text-red-600 px-4 py-2 rounded-lg hover:bg-red-100 transition-colors">
+                        <i class="far fa-heart text-sm"></i>
+                        <span>${project.likes}</span>
+                    </button>
+                    <button onclick="showCollabModal('${project.author}', ${projectId})" class="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-envelope text-sm"></i>
+                        <span>Hubungi untuk Kolaborasi</span>
+                    </button>
+                </div>
+
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center">
+                        <i class="fas fa-comments mr-2"></i>
+                        Komentar (${project.comments.length})
+                    </h3>
+                    <div class="space-y-4 mb-4 max-h-60 overflow-y-auto" id="comments-container">
+                        ${commentsHtml}
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="comment-input" class="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Tulis komentar..." onkeypress="if(event.key==='Enter') addComment(${projectId})">
+                        <button onclick="addComment(${projectId})" class="p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700">
+                            <i class="fas fa-paper-plane text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function handleLikeInModal(projectId) {
+            const button = document.querySelector(`.project-card[data-category="${document.querySelector('.project-card[data-category]').dataset.category}"] .like-btn`);
+            toggleLike(button, projectId);
+            const projectCard = document.querySelector(`.project-card:nth-child(${projectId})`);
+            const likesElement = document.getElementById(`likes-${projectId}`);
+            const modalButton = document.querySelector('#project-modal-content button:first-child');
+            const modalIcon = modalButton.querySelector('i');
+            const modalSpan = modalButton.querySelector('span');
+            const currentLikes = parseInt(likesElement.textContent.replace(/,/g, ''));
+            if (modalButton.classList.contains('bg-red-100')) {
+                modalButton.classList.remove('bg-red-100', 'text-red-600');
+                modalButton.classList.add('bg-red-50');
+                modalIcon.className = 'far fa-heart text-sm';
+                modalSpan.textContent = (currentLikes - 1).toLocaleString();
+            } else {
+                modalButton.classList.remove('bg-red-50');
+                modalButton.classList.add('bg-red-100', 'text-red-600');
+                modalIcon.className = 'fas fa-heart text-sm';
+                modalSpan.textContent = (currentLikes + 1).toLocaleString();
+            }
+        }
+
+        function addComment(projectId) {
+            const input = document.getElementById('comment-input');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            const now = new Date();
+            const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+            
+            const commentHtml = `
+                <div class="bg-slate-50 p-3 rounded-lg">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-medium">Kamu</span>
+                        <span class="text-xs text-slate-500">${time}</span>
+                    </div>
+                    <p class="text-slate-700">${text}</p>
+                </div>
+            `;
+            
+            document.getElementById('comments-container').insertAdjacentHTML('beforeend', commentHtml);
+            input.value = '';
+        }
+
+        function hideProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Category filtering
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('category-active');
+                });
+                this.classList.add('category-active');
+                const category = this.getAttribute('data-category');
+                document.querySelectorAll('.project-card').forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Counter animation
+        function animateCounter(element, target) {
+            const counter = element.querySelector('[data-target]');
+            const targetValue = parseInt(counter.getAttribute('data-target'));
+            let current = 0;
+            const increment = targetValue / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= targetValue) {
+                    current = targetValue;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current).toLocaleString();
+            }, 20);
+        }
+
+        // Submit form modal
+        function showSubmitForm() {
+            document.getElementById('submit-modal').classList.remove('hidden');
+        }
+        function hideSubmitForm() {
+            document.getElementById('submit-modal').classList.add('hidden');
+        }
+
+        // Experience form modal
+        function showExperienceForm() {
+            document.getElementById('experience-modal').classList.remove('hidden');
+        }
+        function hideExperienceForm() {
+            document.getElementById('experience-modal').classList.add('hidden');
+        }
+
+        // Collaboration modal
+        function showCollabModal(author, projectId) {
+            document.getElementById('collab-title').textContent = `Hubungi ${author}`;
+            document.getElementById('collab-subtitle').textContent = `Kirim permintaan kolaborasi ke ${author}`;
+            document.getElementById('collab-form').onsubmit = function(e) {
+                e.preventDefault();
+                const name = document.getElementById('collab-name').value;
+                const email = document.getElementById('collab-email').value;
+                alert(`Permintaan kolaborasi terkirim ke ${author}!\nDari: ${name}\nEmail: ${email}`);
+                hideCollabModal();
+            };
+            document.getElementById('collab-modal').classList.remove('hidden');
+        }
+        function hideCollabModal() {
+            document.getElementById('collab-modal').classList.add('hidden');
+        }
+
+        // Form submissions
+        document.getElementById('submit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('project-title').value;
+            const author = document.getElementById('project-author').value;
+            const category = document.getElementById('project-category').value;
+            const description = document.getElementById('project-description').value;
+            
+            if (!title || !author || !category || !description) {
+                alert('Harap lengkapi semua field.');
+                return;
+            }
+            
+            // Simulate adding to DOM
+            const categories = {
+                'seni': 'Seni Rupa',
+                'musik': 'Musik',
+                'teknologi': 'Teknologi',
+                'sastra': 'Sastra',
+                'film': 'Film & Video'
+            };
+            
+            const newProject = document.createElement('div');
+            newProject.className = `project-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden card-hover group`;
+            newProject.setAttribute('data-category', category);
+            newProject.innerHTML = `
+                <div class="relative">
+                    <img src="https://placehold.co/400x300/667eea/ffffff?text=${encodeURIComponent(title)}" alt="${title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-4 right-4 flex space-x-2">
+                        <button class="like-btn p-2 rounded-full bg-white/80 text-slate-700 hover:bg-red-500 hover:text-white transition-all duration-300" onclick="toggleLike(this, ${Date.now()})">
+                            <i class="far fa-heart text-sm"></i>
+                        </button>
+                        <button class="p-2 rounded-full bg-white/80 text-slate-700 hover:bg-blue-500 hover:text-white transition-all duration-300" onclick="shareProject(${Date.now()})">
+                            <i class="fas fa-share text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="project-overlay absolute inset-0 flex items-center justify-center">
+                        <button class="bg-white text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-300" onclick="viewProject(${Date.now()})">
+                            Lihat Detail
+                        </button>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">${title}</h3>
+                    <p class="text-slate-600 mb-3">oleh ${author}</p>
+                    <p class="text-slate-700 mb-4 line-clamp-2">${description}</p>
+                    <div class="flex items-center justify-between text-sm text-slate-500">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center space-x-1">
+                                <i class="far fa-heart text-sm"></i>
+                                <span id="likes-${Date.now()}">0</span>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-eye text-sm"></i>
+                                <span id="views-${Date.now()}">0</span>
+                            </div>
+                        </div>
+                        <span class="capitalize text-primary-600 font-medium">${categories[category]}</span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('projects-container').prepend(newProject);
+            
+            document.getElementById('project-title').value = '';
+            document.getElementById('project-author').value = '';
+            document.getElementById('project-category').value = '';
+            document.getElementById('project-description').value = '';
+            hideSubmitForm();
+            alert('Karya berhasil disubmit! Terima kasih telah berkontribusi.');
+        });
+
+        document.getElementById('experience-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('exp-name').value;
+            const title = document.getElementById('exp-title').value;
+            const category = document.getElementById('exp-category').value;
+            const content = document.getElementById('exp-content').value;
+            
+            if (!name || !title || !category || !content) {
+                alert('Harap lengkapi semua field.');
+                return;
+            }
+            
+            const categories = {
+                'seni': 'Seniman Digital',
+                'musik': 'Musisi Indie',
+                'teknologi': 'Pengembang Teknologi',
+                'sastra': 'Penulis',
+                'film': 'Sutradara'
+            };
+            
+            const newExp = document.createElement('div');
+            newExp.className = 'bg-white p-6 rounded-2xl shadow-lg experience-card';
+            newExp.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/50x50/667eea/ffffff?text=${name.split(' ').map(n => n[0]).join('')}" alt="${name}" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-slate-900">${name}</h4>
+                        <p class="text-slate-600 text-sm">${categories[category]}</p>
+                    </div>
+                </div>
+                <p class="text-slate-700">"${content}"</p>
+            `;
+            document.querySelector('#pengalaman .grid').appendChild(newExp);
+            
+            document.getElementById('exp-name').value = '';
+            document.getElementById('exp-title').value = '';
+            document.getElementById('exp-category').value = '';
+            document.getElementById('exp-content').value = '';
+            hideExperienceForm();
+            alert('Pengalaman berhasil dibagikan! Terima kasih telah berbagi cerita kreatifmu.');
+        });
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize category buttons
+        document.querySelector('.category-btn[data-category="all"]').classList.add('category-active');
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            const submitModal = document.getElementById('submit-modal');
+            const experienceModal = document.getElementById('experience-modal');
+            const projectModal = document.getElementById('project-modal');
+            const collabModal = document.getElementById('collab-modal');
+            
+            if (e.target === submitModal) hideSubmitForm();
+            if (e.target === experienceModal) hideExperienceForm();
+            if (e.target === projectModal) hideProjectModal();
+            if (e.target === collabModal) hideCollabModal();
+        });
+    </script>
+</body>
+</html>
+
